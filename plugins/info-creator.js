@@ -17,24 +17,16 @@ prepareWAMessageMedia
 var handler = async (m, {
 conn
 }) => {
-const vcard = `BEGIN:VCARD
-VERSION:3.0
-N:Sy;Bot;;;
-FN: ${name}
-item.ORG: Creator Bot
-item1.TEL;waid=${numberowner}:${numberowner}@s.whatsapp.net
-item1.X-ABLabel:Nomor Creator Bot 
-item2.EMAIL;type=INTERNET:${gmail}
-item2.X-ABLabel:Email Owner
-item3.ADR:;;🇮🇩 Indonesia;;;;
-item3.X-ABADR:ac
-item4.EMAIL;type=INTERNET:support@tioprm.eu.org
-item4.X-ABLabel:Email Developer 
-item3.ADR:;;🇮🇩 Indonesia;;;;
-item3.X-ABADR:ac 
-item5.URL:${instagram}
-item5.X-ABLabel:Website
-END:VCARD`
+const vcard = "BEGIN:VCARD\n" +
+"VERSION:3.0\n" +
+"N:Sy;Bot;;;\n" +
+`FN: ${name}\n` +
+"ORG:Calestial World;\n" + // the organization of the contact
+"TEL;type=CELL;type=VOICE;waid=6283117436733:+62 831-1743-6733\n" + // WhatsApp ID + phone number
+`EMAIL;type=INTERNET:${gmail}\n` +
+"ADR:;;🇮🇩 Indonesia;;;;\n" +
+`URL:${website}\n` +
+"END:VCARD"
 const sentMsg  = await conn.sendMessage(
     m.chat,
     { 

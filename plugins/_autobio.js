@@ -3,7 +3,7 @@ module.exports = {
     if (global.autobio) {
       setInterval(async () => {
         let uptime = process.uptime() * 1000;
-        let bio = `🤖 Aktif Selama: ${clockString(uptime)} | 💌 by: ${wm}`;
+        let bio = `Aktif Selama: ${clockString(uptime)} | Support: ${wm}`;
         await this.updateProfileStatus(bio).catch(_ => _);
       }, 60000);
     }

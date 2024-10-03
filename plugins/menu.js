@@ -43,11 +43,8 @@ let tags = {
 const defaultMenu = {
   before: `
 Hi %name
-I am an automated system (WhatsApp Bot) that can help to do something, search and get data / information only through WhatsApp.
+I am an ryo yamada (WhatsApp Bot) that can help to do something,
 
- ◦  *Library:* Baileys
- ◦  *Function:* Assistant
- 
 ┌  ◦ Uptime : %uptime
 │  ◦ Hari : %week %weton
 │  ◦ Waktu : %time
@@ -164,8 +161,8 @@ text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ?
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://telegra.ph/file/3a34bfa58714bdef500d9.jpg',
-                        sourceUrl: 'https://whatsapp.com/channel/0029Va8ZH8fFXUuc69TGVw1q'
+                        thumbnailUrl: 'https://pomf2.lain.la/f/zg5ebft.jpg',
+                        sourceUrl: 'https://whatsapp.com/channel/0029VaAN3lwA89MeWkZE3I21'
                     }
                 }, mentions: [m.sender]
 }}, {})  
