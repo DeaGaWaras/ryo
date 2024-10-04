@@ -161,7 +161,7 @@ text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ?
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://pomf2.lain.la/f/zg5ebft.jpg',
+                        thumbnail: '/media/thumbnail.jpg',
                         sourceUrl: 'https://whatsapp.com/channel/0029VaAN3lwA89MeWkZE3I21'
                     }
                 }, mentions: [m.sender]

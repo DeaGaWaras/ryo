@@ -13,7 +13,7 @@ let handler = async (m) => {
                             }
                           }
                         }
-m.reply(`${global.db.data.users[who].limit} Limit Tersisaಥ_ಥ`)
+m.reply(`${global.db.data.users[who].limit} Limit Tersisa`)
 
 }
 handler.help = ['limit [@user]']
