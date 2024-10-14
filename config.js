@@ -19,7 +19,7 @@ global.autobio = false // Set true untuk mengaktifkan autobio
 global.maxwarn = '5' // Peringatan maksimum
 
 //INI WAJIB DI ISI!//
-global.btc = 'LXCG3aVX' 
+global.btc = '670cf13b5aabea64c24c' 
 //Daftar terlebih dahulu https://api.botcahx.eu.org
 
 //INI OPTIONAL BOLEH DI ISI BOLEH JUGA ENGGA//
@@ -34,7 +34,7 @@ global.APIs = {
   rose: 'https://api.itsrose.rest'
 }
 global.APIKeys = { 
-  'https://api.botcahx.eu.org': 'LXCG3aVX' 
+  'https://api.botcahx.eu.org': '670cf13b5aabea64c24c' 
 }
 
 let fs = require('fs')
