@@ -265,7 +265,7 @@ module.exports = {
             exp: 0,
             coin: 0,
             atm: 0,
-            limit: 50,
+            limit: 25,
             tigame: 999,
             lastclaim: 0,
             money: 0,
