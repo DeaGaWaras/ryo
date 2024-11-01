@@ -9,7 +9,7 @@ global.mail = 'support@Dea.SukaSusu'
 global.gc = 'https://chat.whatsapp.com/ClTnd1QeIxl5Kku29sRQhx'
 global.instagram = 'https://instagram.com/syh.dea'
 global.website = 'https://calestial.shop'
-global.wm = '© Anna'
+global.wm = 'Calestial Support'
 global.wait = '_*Tunggu sedang di proses...*_'
 global.eror = '_*Server Error*_'
 global.stiker_wait = '*⫹⫺ Stiker sedang dibuat...*'
@@ -17,6 +17,7 @@ global.packname = 'Made With'
 global.author = 'Calestial Support'
 global.autobio = false // Set true untuk mengaktifkan autobio
 global.maxwarn = '5' // Peringatan maksimum
+global.antiporn = false // Auto delete pesan porno (bot harus admin)
 
 //INI WAJIB DI ISI!//
 global.btc = '670cf13b5aabea64c24c' 
