@@ -28,6 +28,7 @@ global.lann = 'JDgbMuvq'
 //Daftar https://api.betabotz.eu.org 
 
 global.rose = 'Rk-SaruulBelatungPadang'
+global.lovita = 'Bearer Rk-SaruulBelatungPadang'
 
 global.APIs = {   
   btc: 'https://api.botcahx.eu.org',

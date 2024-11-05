@@ -1,81 +1,114 @@
 const axios = require('axios');
 
 let handler = async (m, { text, usedPrefix, command }) => {
-  if (!text) throw `🚩 *Masukan detail untuk lirik lagu!*`;
 
-  const msg = await conn.sendMessage(
-    m.chat,
-    { text: "_Preparing Suno Request_" },
-    { quoted: m }
-  );
+      if (!text) throw `🚩 *Masukan detail untuk lirik lagu!*\nExample ${usedPrefix + command} title, prompt, tags`;
 
-  const parts = text.split(',').map(part => part.trim());
-
-  // Jika kurang dari 3 bagian, tambahkan placeholder kosong
-  while (parts.length < 3) {
-    parts.push("");
-  }
-
-  // Menampilkan hasil dalam format yang diinginkan
-  const [judul, deskripsi, tag] = parts;
-
-  const payloads = {
-    title: judul,
-    tags: deskripsi,
-    prompt: tag, // Text or lyrics provided by the user
-    instrumental: false
-  };
-
-  try {
-    const { data } = await axios.request({
-      baseURL: "https://internal-api.lovita.io",
-      url: "/suno/advance",
-      method: "POST",
-      headers: {
-        'Authorization': rose,
-        'Content-Type': 'application/json'
-      },
-      data: payloads,
-    });
-
-    const { status, message, result } = data;
-
-    if (!status) {
-      await conn.sendMessage(m.chat, {
-        text: message,
-        edit: { ...msg.key },
-      });
-      return;
-    }
-
-    // Log result for debugging
-    console.log("Suno API Result: ", result);
-
-    for (const item of result) {
-      const { id, status, created_at, prompt_description, output, meta, error } = item;
-
-      if (output && output.audio) {
-        await conn.sendMessage(m.chat, {
-          audio: { url: output.audio },
-          mimetype: 'audio/mpeg',
-          caption: `*Title*: ${meta.title || 'N/A'}\n*Tags*: ${meta.tags || 'N/A'}\n*Duration*: ${meta.duration || 'N/A'} seconds\n*Status*: ${status}\n*Created At*: ${created_at}`,
-        }, { quoted: m });
-      } else if (error && error.message) {
-        await conn.sendMessage(m.chat, {
-          text: `🚩 Error: ${error.message}`,
-          edit: { ...msg.key },
-        });
-      } else {
-        await conn.sendMessage(m.chat, {
-          text: "🚩 Tidak ada output audio yang dihasilkan.",
-          edit: { ...msg.key },
-        });
+      const msg = await conn.sendMessage(
+        m.chat,
+        { text: "_Preparing Suno Request_" },
+        { quoted: m }
+      );
+    
+      const parts = text.split(',').map(part => part.trim());
+    
+      // Jika kurang dari 3 bagian, tambahkan placeholder kosong
+      while (parts.length < 3) {
+        parts.push("");
       }
+
+        const [judul, prompt, ...tagArr] = parts;
+        const tags = tagArr.join(', ');
+
+        const payloads = {
+            title: judul,
+            tags: tags || '',
+            prompt: prompt,
+            instrumental: false
+        };
+        try {
+        // Send initial request to generate Suno result
+        const res = await axios.request({
+            url: "https://internal-api.lovita.io/suno/advance",
+            method: "POST",
+            headers: {
+                'Authorization': 'Bearer Rk-SaruulBelatungPadang',
+                'Content-Type': 'application/json'
+            },
+            data: payloads,
+        });
+
+        if (res.data.status && res.data.result.length > 0) {
+            const topId = res.data.result[0].id;
+
+            // Check for completion status after 1 minute
+            setTimeout(async () => {
+                const fetchRes = await axios.get(`https://internal-api.lovita.io/suno/fetch?ids=${topId}`, {
+                    headers: {
+                        'Authorization': 'Bearer Rk-SaruulBelatungPadang',
+                        'accept': 'application/json'
+                    }
+                });
+
+                if (fetchRes.data.status && fetchRes.data.result.length > 0) {
+                    const hasil = fetchRes.data.result[0];
+                    const { meta, output } = hasil;
+                    const thumb = output.image_thumb;
+
+                    // Format duration
+                    const durasiFmt = (detik) => {
+                        const jam = Math.floor(detik / 3600);
+                        const menit = Math.floor((detik % 3600) / 60);
+                        const detikSisa = Math.floor(detik % 60);
+                        return [jam, menit, detikSisa]
+                            .map(unit => String(unit).padStart(2, '0'))
+                            .join(':');
+                    };
+
+                    const durasi = durasiFmt(meta.duration);
+                    let teks = `*Judul:* ${meta.title}\n`;
+                    teks += `*Tags:* ${meta.tags}\n`;
+                    teks += `*Model:* ${meta.model}\n`;
+                    teks += `*Durasi:* ${durasi}\n\n`;
+                    teks += `${meta.lyric || 'Lirik tidak tersedia'}\n`;
+
+            
+                    await conn.relayMessage(m.chat, {
+                      extendedTextMessage:{
+                          text: teks, 
+                          contextInfo: {
+                               externalAdReply: {
+                                  title: `🎵 Suno 🎵`,
+                                  mediaType: 1,
+                                  previewType: 0,
+                                  renderLargerThumbnail: true,
+                                  thumbnailUrl: output.image_thumb,
+                                  sourceUrl: 'https://calestial.shop'
+                              }
+                          }, mentions: [m.sender]
+          }}, {})
+
+                    // Send audio file if available
+                    await conn.sendMessage(m.chat, {
+                      audio: { url: output.audio },
+                      mimetype: 'audio/mpeg',
+                    }, { quoted: m });
+        
+                } else {
+                    m.reply(m.chat, fetchRes.data, m);
+                }
+            }, 60000);  // Wait for 1 minute before checking
+
+        } else {
+          await conn.sendMessage(m.chat, {
+            text: "🚩 Error fetching audio. Please try again later.",
+            edit: { ...msg.key },
+          });
+        }
+    } catch (e) {
+      console.error("Error:", e);
+      m.reply("Terjadi kesalahan dalam memproses permintaan.");
     }
-  } catch (error) {
-    console.error("Error:", error);
-    m.reply("Terjadi kesalahan dalam memproses permintaan.");
-  }
 };
 
 handler.help = ["suno"];
