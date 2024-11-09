@@ -34,5 +34,8 @@ function handler(m, { text }) {
 handler.help = ['namaninja <teks>']
 handler.tags = ['fun']
 handler.command =  /^(namaninja|namae)$/i
+handler.limit = true;
+handler.premium = false;
+
 
 module.exports = handler

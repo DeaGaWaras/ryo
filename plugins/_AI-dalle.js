@@ -13,5 +13,7 @@ let handler = async (m, { text, command, conn }) => {
 }
 handler.command = handler.help = ['aiimg','aiimage','ai-image','dalle']
 handler.tags = ['tools']
+handler.premium = true
+handler.limit = false
 
 module.exports = handler

@@ -21,5 +21,8 @@ handler.command = /^(hidetag)$/i
 
 handler.group = true
 handler.admin = true
+handler.limit = false;
+handler.premium = true;
+
 
 module.exports = handler

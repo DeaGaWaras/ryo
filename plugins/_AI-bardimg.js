@@ -22,6 +22,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 handler.help = ['bardimg','geminiimg']
 handler.tags = ['tools']
 handler.command = /^(bardimg|bardimage|geminiimg)$/i
-handler.limit = true;
+handler.limit = false;
+handler.premium = true
 
 module.exports = handler

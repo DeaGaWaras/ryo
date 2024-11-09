@@ -13,5 +13,5 @@ let handler = async (m, { conn }) => {
 handler.help = ['storyanime'];
 handler.tags = ['downloader'];
 handler.command = /^(storyanime)$/i;
-handler.limir = true 
+handler.limit = true 
 module.exports = handler;

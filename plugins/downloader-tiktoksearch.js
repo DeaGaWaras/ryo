@@ -40,6 +40,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 handler.help = ['ttsearch'].map(v => v + ' <username>');
 handler.tags = ['downloader'];
 handler.command = /^(tiktoksearch|ttsearch)$/i;
-handler.limit = true;
+handler.limit = false;
+handler.premium = true
 
 module.exports = handler;

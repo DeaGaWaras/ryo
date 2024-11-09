@@ -7,21 +7,22 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     const response = await fetch(`https://api.botcahx.eu.org/api/dowloader/yt?url=${encodeURIComponent(text)}&apikey=${btc}`);
     const result = await response.json();
 
-    if (result.status && result.result && result.result.mp4) {
+    if (result.status && result.result && result.result.mp3) {
       await conn.sendMessage(m.chat, { 
-        video: { url: result.result.mp4 }, 
-        mimetype: 'video/mp4' 
+        audio: { url: result.result.mp3 }, 
+        mimetype: 'audio/mpeg' 
       }, { quoted: m });
     } else {
-      throw 'Error: Unable to fetch video';
+      throw 'Error: Unable to fetch audio';
     }
   } catch (error) {
     throw eror
   }
 };
 
-handler.help = handler.command = ['ytmp4', 'ytv'];
+handler.help = handler.command = ['ytmp3', 'yta'];
 handler.tags = ['downloader'];
+handler.exp = 0;
 handler.limit = true;
 handler.premium = false;
 

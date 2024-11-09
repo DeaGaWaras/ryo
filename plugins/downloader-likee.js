@@ -22,6 +22,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 };
 handler.command = handler.help = ['likee'];
 handler.tags = ['downloader'];
-handler.limit = true;
+handler.limit = false;
+handler.premium = true
 
 module.exports = handler;

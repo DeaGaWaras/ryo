@@ -1,6 +1,4 @@
 
-//hapis skibidi
-
 let handler = async (m, { conn }) => {
   let user = global.db.data.users[m.sender]
         let role = (user.level <= 2) ? 'Newbie ㋡'

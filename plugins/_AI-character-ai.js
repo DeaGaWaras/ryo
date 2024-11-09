@@ -19,5 +19,6 @@ handler.owner = false
 handler.limit = false
 handler.group = false
 handler.private = false
+handler.premium = true
 
 module.exports = handler

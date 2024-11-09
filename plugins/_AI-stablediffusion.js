@@ -14,7 +14,8 @@ let handler = async (m, { text, conn, usedPrefix, command }) => {
 };
 handler.command = handler.help = ['diffusion', 'stablediffusion', 'diff'];
 handler.tags = ['tools'];
-handler.limit = true;
+handler.limit = false;
+handler.premium = true
 handler.private = false;
 handler.group = false;
 

@@ -110,5 +110,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 handler.help = ["txt2img"];
 handler.command = ["text2img", "txt2img"];
 handler.tags = ['tools'];
-handler.limit = true;
+handler.limit = false;
+handler.premium = true
+
 module.exports = handler;

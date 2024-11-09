@@ -114,5 +114,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 handler.help = ["suno"];
 handler.command = ["suno"];
 handler.tags = ['tools'];
-handler.limit = true;
+handler.limit = false;
+handler.premium = true
+
 module.exports = handler;

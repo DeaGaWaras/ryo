@@ -40,7 +40,8 @@ let handler = async (m, {
 
 handler.command = handler.help = ['douyinslide', 'douyinfoto','ttslide','tiktokslide'];
 handler.tags = ['downloader'];
-handler.limit = true;
+handler.limit = false;
+handler.premium = true
 
 module.exports = handler;
 

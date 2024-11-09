@@ -23,9 +23,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 };
 handler.help = handler.command = ['dl', 'alldl', 'aiodl', 'aio'];
 handler.tags = ['downloader'];
-handler.limit = true;
+handler.limit = false;
 handler.group = false;
-handler.premium = false;
+handler.premium = true;
 handler.owner = false;
 handler.admin = false;
 handler.botAdmin = false;

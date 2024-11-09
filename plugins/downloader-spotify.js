@@ -96,4 +96,6 @@ handler.help = ['spotify'];
 handler.command = /^(spotify)$/i;
 handler.tags = ['downloader'];
 handler.limit = true;
+handler.premium = false
+
 module.exports = handler;

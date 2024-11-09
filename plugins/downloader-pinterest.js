@@ -19,6 +19,7 @@ let handler = async (m, { usedPrefix, command, conn, args }) => {
 handler.help = ['pinterest <keyword>'];
 handler.tags = ['internet', 'downloader'];
 handler.command = /^(pinterest)$/i;
+handler.limit = true
 
 module.exports = handler;
 

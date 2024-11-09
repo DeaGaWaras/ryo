@@ -59,7 +59,8 @@ handler.command = handler.help = ['bing', 'bingimg']
 
 //handler.command = handler.help = ['bing']
 handler.tags = ['tools']
-handler.limit = true
+handler.limit = false
+handler.premium = true
 
 module.exports = handler
 
