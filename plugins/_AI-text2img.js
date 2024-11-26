@@ -42,7 +42,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
   try {
     const { data } = await axios.request({
       baseURL: "https://api.itsrose.rest",
-      url: "/image/diffusion/txt2img",
+      url: "/sdapi/txt2img",
       method: "POST",
       headers: {
         Authorization: rose,
