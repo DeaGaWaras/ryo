@@ -1,23 +1,25 @@
-let handler = async (m, { conn, text }) => {
+const { MessageType } = require('@adiwajshing/baileys').default;
 
-    let who
-    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text
-    else who = m.chat
-    if (!who) throw `tag orangnya!`
-    if (!global.prems.includes(who.split`@`[0])) throw 'dia ngga premium!'
-    let index = global.prems.findIndex(v => (v.replace(/[^0-9]/g, '') + '@s.whatsapp.net') === (who.replace(/[^0-9]/g, '') + '@s.whatsapp.net'))
-    global.prems.splice(index, 1)
-    conn.reply(m.chat, `@${who.split('@')[0]} sekarang bukan premium!`, m, {
-        contextInfo: {
-            mentionedJid: [who]
-        }
-    })
+let handler = async (m, { conn, text, usedPrefix }) => {
+    function no(number){
+      return number.replace(/\s/g, '').replace(/([@+-])/g, '');
+    }
+    
+    if (!text) {
+        return conn.reply(m.chat, `*『 G A G A L 』*\n\n${usedPrefix}unprem @tag/nomor\n\n*Example:* ${usedPrefix}unprem 62xxx`, m);
+    }
+  
+    text = no(text) + "@s.whatsapp.net";
+  global.db.data.users[text].premium = false;
+  global.db.data.users[text].premiumTime = 0;
+  
+  conn.reply(m.chat, `*Berhasil menghapus akses premium untuk @${text.split('@')[0]}.*`, m, { contextInfo: { mentionedJid: [text] } });
+};
 
-}
-handler.help = ['delprem [@user]']
-handler.tags = ['owner']
-handler.command = /^(remove|hapus|-|del)prem$/i
+handler.help = ['unprem'];
+handler.tags = ['owner'];
+handler.command = /^(unprem|delprem)$/i;
+handler.owner = true;
+handler.fail = null;
 
-handler.owner = true
-
-module.exports = handler
+module.exports = handler;

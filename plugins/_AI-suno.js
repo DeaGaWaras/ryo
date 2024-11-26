@@ -29,10 +29,10 @@ let handler = async (m, { text, usedPrefix, command }) => {
         try {
         // Send initial request to generate Suno result
         const res = await axios.request({
-            url: "https://internal-api.lovita.io/suno/advance",
+            url: "https://api.itsrose.rest/suno/advance",
             method: "POST",
             headers: {
-                'Authorization': 'Bearer Rk-SaruulBelatungPadang',
+                'Authorization': rose,
                 'Content-Type': 'application/json'
             },
             data: payloads,
@@ -43,7 +43,7 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
             // Check for completion status after 1 minute
             setTimeout(async () => {
-                const fetchRes = await axios.get(`https://internal-api.lovita.io/suno/fetch?ids=${topId}`, {
+                const fetchRes = await axios.get(`https://api.itsrose.rest/suno/fetch?ids=${topId}`, {
                     headers: {
                         'Authorization': 'Bearer Rk-SaruulBelatungPadang',
                         'accept': 'application/json'
