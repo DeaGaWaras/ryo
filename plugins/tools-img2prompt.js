@@ -23,7 +23,7 @@ command
 	}
 };
 handler.help = ['img2prompt'];
-handler.command = ['img2prompt'];
+handler.command = ['img2prompt', 'prompt'];
 handler.tags = ['tools'];
 handler.premium = false;
 handler.limit = true;
