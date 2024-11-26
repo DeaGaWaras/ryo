@@ -27,8 +27,8 @@ global.btc = '670cf13b5aabea64c24c'
 global.lann = 'JDgbMuvq'
 //Daftar https://api.betabotz.eu.org 
 
-global.rose = 'Prod-Sk-d39d5bad8869e9b5e39e275330c08345'
-global.lovita = 'Bearer Prod-Sk-d39d5bad8869e9b5e39e275330c08345'
+global.rose = 'Bearer Prod-Sk-d39d5bad8869e9b5e39e275330c08345'
+
 
 global.APIs = {   
   btc: 'https://api.botcahx.eu.org',

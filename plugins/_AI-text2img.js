@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const axios = require('axios')
+const fetch = require("node-fetch");
+const axios = require("axios");
 
 let handler = async (m, { text, usedPrefix, command }) => {
   if (!text) throw `🚩 *Masukan detail gambar!* `;
@@ -53,54 +53,56 @@ let handler = async (m, { text, usedPrefix, command }) => {
     const { status, message } = data; // status kode apa pun
 
     if (!status) {
-			await conn.sendMessage(m.chat, {
-				text: message,
-				edit: { ...msg.key },
-			});
-			return;
-		}
+      await conn.sendMessage(m.chat, {
+        text: message,
+        edit: { ...msg.key },
+      });
+      return;
+    }
 
     const { result } = data;
     const { generation_time, images, metadata } = result;
     console.log("Text Ke Image: ", images);
     await conn.sendMessage(m.chat, {
-			text: `Image generated in ${result["generation_time"].toFixed(2)} seconds`,
-			edit: { ...msg.key },
-		});
+      text: `Image generated in ${result["generation_time"].toFixed(
+        2
+      )} seconds`,
+      edit: { ...msg.key },
+    });
 
-		// wait the image to be ready
-		await new Promise((resolve) => {
-			setTimeout(() => {
-				resolve();
-			}, result["generation_time"] * 1000);
-		});
+    // wait the image to be ready
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, result["generation_time"] * 1000);
+    });
 
     await conn.sendMessage(m.chat, {
-			text: (function (t = "") {
-				for (const key in result["metadata"]) {
-					t += `*${key}*: ${result["metadata"][key]}\n`;
-				}
-				return t.trim();
-			})(`*server_name*: ${result["server_name"]}\n`),
-			edit: { ...msg.key },
-		});
+      text: (function (t = "") {
+        for (const key in result["metadata"]) {
+          t += `*${key}*: ${result["metadata"][key]}\n`;
+        }
+        return t.trim();
+      })(`*server_name*: ${result["server_name"]}\n`),
+      edit: { ...msg.key },
+    });
 
     try {
-			for await (const url of result["images"]) {
-				await conn.sendMessage(
-					m.chat,
-					{
-						image: { url },
-					},
-					{ quoted: m }
-				);
-			}
-		} catch {
-			await conn.sendMessage(m.chat, {
-				text: "Failed getting images from: " + result["images"].join(", "),
-				edit: { ...msg.key },
-			});
-		}
+      for await (const url of result["images"]) {
+        await conn.sendMessage(
+          m.chat,
+          {
+            image: { url },
+          },
+          { quoted: m }
+        );
+      }
+    } catch {
+      await conn.sendMessage(m.chat, {
+        text: "Failed getting images from: " + result["images"].join(", "),
+        edit: { ...msg.key },
+      });
+    }
   } catch (error) {
     console.error("Error:", error);
     m.reply("Terjadi kesalahan dalam memproses permintaan.");
@@ -109,8 +111,8 @@ let handler = async (m, { text, usedPrefix, command }) => {
 
 handler.help = ["txt2img"];
 handler.command = ["text2img", "txt2img"];
-handler.tags = ['tools'];
+handler.tags = ["tools"];
 handler.limit = false;
-handler.premium = true
+handler.premium = true;
 
 module.exports = handler;
