@@ -47,59 +47,65 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
   let teks = `Silahkan Gunakan command dibawah
   Example: *!buildhsr kafka*
-  
- *Daftar Character:*
-1. Arlan
-2. Argenti
-3. Asta
-4. Bailu
-5. BlackSwan
-6. Blade
-7. Boothill
-8. Bronya
-9. Clara
-10. Danheng
-11. Danhengil
-12. DrRatio
-13. Fei Xiao
-14. Fuxuan
-15. Gepard
-16. Guinafen
-17. Hanya
-18. Herta
-19. Himeko
-20. Hook
-21. HuoHuo
-22. Jade
-23. JingLiu
-24. Jingyuan
-25. Kafka
-26. Luka
-27. Luocha
-28. Lynx
-29. March
-30. Misha
-31. Moze
-32. Natasha
-33. Pela
-34. Qingque
-35. Robin
-36. RuanMei
-37. Sampo
-38. Seele
-39. Serval
-40. Silverwolf
-41. Sparkle
-42. Sushang
-43. Tingyun
-44. Topaz
-45. Trailblazerfire
-46. Trailblazerimaginary
-47. Trailblazerphysical
-48. Welt
-49. Xueyi
-50. Yanqing
-51. Yukong`;
+ 
+  **Daftar Character:**  
+  1. Aglaea  
+  2. Arlan  
+  3. Argenti  
+  4. Asta  
+  5. Bailu  
+  6. BlackSwan  
+  7. Blade  
+  8. Boothill  
+  9. Bronya  
+  10. Clara  
+  11. Danheng  
+  12. Danhengil  
+  13. DrRatio  
+  14. Fei Xiao  
+  15. Feixiao  
+  16. Fugue  
+  17. Fuxuan  
+  18. Gepard  
+  19. Guinafen  
+  20. Hanya  
+  21. Herta  
+  22. Himeko  
+  23. Hook  
+  24. HuoHuo  
+  25. Jade  
+  26. JingLiu  
+  27. Jingyuan  
+  28. Kafka  
+  29. Lingsha  
+  30. Luka  
+  31. Luocha  
+  32. Lynx  
+  33. March  
+  34. Misha  
+  35. Moze  
+  36. Natasha  
+  37. Pela  
+  38. Qingque  
+  39. Rappa  
+  40. Robin  
+  41. RuanMei  
+  42. Sampo  
+  43. Seele  
+  44. Serval  
+  45. Silverwolf  
+  46. Sparkle  
+  47. Sushang  
+  48. Tingyun  
+  49. Topaz  
+  50. Trailblazerfire  
+  51. Trailblazerimaginary  
+  52. Trailblazerphysical  
+  53. Welt  
+  54. Xueyi  
+  55. Yanqing  
+  56. Yukong  
+  57. Yunli`;
 
   try {
     const dictionary = [
@@ -154,7 +160,13 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       "robin",
       "jade",
       "feixiao",
-      "moze"
+      "moze",
+      "aglaea",
+      "feixiao",
+      "fugue",
+      "lingsha",
+      "rappa",
+      "yunli",
     ];
 
     const name = [
@@ -213,6 +225,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       "Jade",
       "Fei Xiao",
       "Moze",
+      "Aglaea",
+      "FeiXiao",
+      "Fugue",
+      "LingSha",
+      "Rappa",
+      "YunLi",
     ];
 
     const correctedWord = await findClosestDistance(parameter, dictionary);

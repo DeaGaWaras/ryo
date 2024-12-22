@@ -47,102 +47,110 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
   let teks = `Silakan gunakan perintah di bawah ini! Contoh: (*!buildgi Raiden*)
 
-*Daftar Character:*
-1. Albedo
-2. ALHaitam
-3. Aloy
-4. Amber
-5. AmberDPS
-6. Ayaka
-7. Ayato
-8. AyatoDPS
-9. Baizhu
-10. Barbara
-11. Beidou
-12. Bennett
-13. Candace
-14. Charlotte
-15. Chevreuse
-16. Chongyun
-17. Collei
-18. Cyno
-19. Dehya
-20. Diluc
-21. Diona
-22. Dori
-23. Emilie
-24. Eula
-25. Faruzan
-26. Fischl
-27. Freminet
-28. Furina
-29. Ganyu
-30. Ganyu_Freeze
-31. Ganyu_Melt
-32. Gaming
-33. Gorou
-34. Heizou
-35. HuTao
-36. Itto
-37. Jean
-38. Kaeya
-39. KaeyaDPS
-40. Kaveh
-41. Kazuha
-42. Keqing_Electro
-43. Keqing_Physical
-44. Kirara
-45. Klee
-46. Kokomi
-47. Layla
-48. Lisa
-49. Lynette
-50. Lyney
-51. Mika
-52. Mona
-53. Mona_Freeze
-54. Mona_Nuke
-55. Nahida
-56. Navia
-57. Neuvillette
-58. Ningguang
-59. NingguangDPS
-60. Nilou
-61. Noelle
-62. Qiqi
-63. Raiden
-64. Razor
-65. Rosaria
-66. Sara
-67. Sayu
-68. Shenhe
-69. Shinobu
-70. Sucrose
-71. Tartaglia
-72. Thoma
-73. Tighnari
-74. Traveler_Anemo
-75. Traveler_Dendro
-76. Traveler_Electro
-77. Traveler_Geo
-78. Venti
-79. Wanderer
-80. Wriothesley
-81. Xiangling
-82. XianglingDPS
-83. Xiao
-84. XiaoDPS
-85. Xilonen
-86. Xingqui
-87. Xinyan
-88. Xianyun
-89. Yae
-90. Yanfei
-91. YaoYao
-92. Yelan
-93. Yoimiya
-94. YunJin
-95. Zhongli`;
+  **Daftar Character:**  
+  1. ALHaitam  
+  2. Albedo  
+  3. Aloy  
+  4. Amber  
+  5. AmberDPS  
+  6. Ayaka  
+  7. Ayato  
+  8. AyatoDPS  
+  9. Baizhu  
+  10. Barbara  
+  11. Beidou  
+  12. Bennett  
+  13. Candace  
+  14. Charlotte  
+  15. Chevreuse  
+  16. Chongyun  
+  17. Citlali  
+  18. Collei  
+  19. Cyno  
+  20. Dehya  
+  21. Diluc  
+  22. Diona  
+  23. Dori  
+  24. Emilie  
+  25. Eula  
+  26. Faruzan  
+  27. Fischl  
+  28. Freminet  
+  29. Furina  
+  30. Ganyu  
+  31. Ganyu_Freeze  
+  32. Ganyu_Melt  
+  33. Gaming  
+  34. Gorou  
+  35. Heizou  
+  36. HuTao  
+  37. Itto  
+  38. Jean  
+  39. Kaeya  
+  40. KaeyaDPS  
+  41. Kachina  
+  42. Kaveh  
+  43. Kazuha  
+  44. Keqing_Electro  
+  45. Keqing_Physical  
+  46. Kinich  
+  47. Kirara  
+  48. Klee  
+  49. Kokomi  
+  50. LanYan  
+  51. Layla  
+  52. Lisa  
+  53. Lynette  
+  54. Lyney  
+  55. Mavuika  
+  56. Mika  
+  57. Mona  
+  58. Mona_Freeze  
+  59. Mona_Nuke  
+  60. Mualani  
+  61. Nahida  
+  62. Navia  
+  63. Neuvillette  
+  64. Ningguang  
+  65. NingguangDPS  
+  66. Nilou  
+  67. Noelle  
+  68. Qiqi  
+  69. Raiden  
+  70. Razor  
+  71. Rosaria  
+  72. Sara  
+  73. Sayu  
+  74. Sethos  
+  75. Shenhe  
+  76. Shinobu  
+  77. Sigewinne  
+  78. Sucrose  
+  79. Tartaglia  
+  80. Thoma  
+  81. Tighnari  
+  82. Traveler_Anemo  
+  83. Traveler_Dendro  
+  84. Traveler_Electro  
+  85. Traveler_Geo  
+  86. Venti  
+  87. Wanderer  
+  88. Wriothesley  
+  89. Xiangling  
+  90. XianglingDPS  
+  91. Xiao  
+  92. XiaoDPS  
+  93. Xianyun  
+  94. Xilonen  
+  95. Xingqui  
+  96. Xinyan  
+  97. Yae  
+  98. Yanfei  
+  99. YaoYao  
+  100. Yelan  
+  101. Yoimiya  
+  102. YunJin  
+  103. Zhongli`;
 
   try {
     const dictionary = [
@@ -239,7 +247,15 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       "Zhongli",
       "Arlecchino",
       "Emilie",
-      "Xilonen"
+      "Xilonen",
+      "Citlali",
+      "Kachina",
+      "Kinich",
+      "LanYan",
+      "Mavuika",
+      "Mualani",
+      "Sethos",
+      "Sigewinne",
     ];
 
     const name = [
@@ -338,7 +354,15 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       "Zhongli",
       "Arlecchino",
       "Emilie",
-      "Xilonen"
+      "Xilonen",
+      "Citlali",
+      "Kachina",
+      "Kinich",
+      "LanYan",
+      "Mavuika",
+      "Mualani",
+      "Sethos",
+      "Sigewinne",
     ];
 
     const correctedWord = await findClosestDistance(parameter, dictionary);
