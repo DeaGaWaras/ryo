@@ -29,6 +29,9 @@ global.lann = 'JDgbMuvq'
 
 global.rose = 'Bearer Prod-Sk-d39d5bad8869e9b5e39e275330c08345'
 
+global.mongodb = {
+  url: "mongodb+srv://dhea:admin@cluster0.ojnf8.mongodb.net/?retryWrites=true&w=majority",
+};
 
 global.APIs = {   
   btc: 'https://api.botcahx.eu.org',
