@@ -11,7 +11,7 @@
     },
     "scripts": {
         "start": "node index.js --autocleartmp --autoread",
-        "code": "node index.js --pairing --autocleartmp --autoread",
+        "code": "node index.js --pairing --autocleartmp --autoread --db 'mongodb+srv://dhea:admin@cluster0.ojnf8.mongodb.net/?retryWrites=true&w=majority'",
         "test": "node test.js",
         "test2": "nodemon index.js --server --autocleartmp --autoread"
     },

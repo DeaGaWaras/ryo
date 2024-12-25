@@ -51,8 +51,8 @@ Pembayaran mudah via Saweria, Dana, Ovo, atau Mobile Banking.
                         mediaType: 1,
                         previewType: 0,
                         renderLargerThumbnail: true,
-                        thumbnailUrl: 'https://im.gurl.eu.org/file/8a20f8a847138a7b787b8-a61210870d8fd79624.png',
-                        sourceUrl: 'https://calestial.shop/qr'
+                        thumbnailUrl: 'https://im.gurl.eu.org/file/AgACAgEAAxkDAAINMGdr9sPtir3Z0h6NcOB0O77g9EE_AAIprTEb65ZhR1kKkKQsKR4UAQADAgADdwADNgQ.jpg',
+                        sourceUrl: 'https://calestialsites.netlify.app/qr'
                     }
                 }, mentions: [m.sender]
 }}, {})
